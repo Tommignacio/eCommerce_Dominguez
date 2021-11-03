@@ -1,3 +1,5 @@
+import CartWidget from '../CartWidget/CartWidget'
+import './NavBar.css'
 const Navbar=()=>{
     return(
         <>
@@ -19,9 +21,11 @@ const Navbar=()=>{
                         <a className="nav-link disabled" href="#">Buy</a>
                     </li>
                     </ul>
-                    <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search"/>
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <form className="my-formSearch form-inline my-2 my-lg-0 ">
+                    <input className="form-control my-form-control mr-sm-2 miBtn" type="search" placeholder="Search"/>
+                    
+                    <button className="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
+                    <CartWidget/>
                     </form>
                 </div>
             </nav>
