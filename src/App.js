@@ -2,7 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import NavBar from './components/NavBar/NavBar';
 import TitleContainer from './components/TitleContainer/TitleContainer';
-import ItemCount from './components/ItemCount/ItemCount'
+import ItemCount from './components/ItemListContainer/ItemCount'
+import ItemList from './components/ItemListContainer/ItemList';
 
 
 function App() {
@@ -12,7 +13,12 @@ function App() {
      <NavBar/>
      <TitleContainer title="Welcome to GentleMan"/>
     </header>
+    <main>
     <ItemCount stock={5} initial={1} />
+    <ItemList/>
+   
+    </main>
+  
     </>
   );
 }
