@@ -2,9 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import NavBar from './components/NavBar/NavBar';
 import TitleContainer from './components/TitleContainer/TitleContainer';
-import ItemCount from './components/ItemListContainer/ItemCount'
 import ItemList from './components/ItemListContainer/ItemList';
-
+import ItemDetail from './components/ItemDetailContainer/ItemDetail';
 
 function App() {
   return (
@@ -14,9 +13,9 @@ function App() {
      <TitleContainer title="Welcome to GentleMan"/>
     </header>
     <main>
-    <ItemCount stock={5} initial={1} />
-    <ItemList/>
    
+    <ItemList/>
+    <ItemDetail/>
     </main>
   
     </>
