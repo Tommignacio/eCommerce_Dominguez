@@ -14,22 +14,32 @@ const ItemDetail=()=>{
 
 
     },[])
-    
+    console.log(detailProd)
     return(
         <>
         {
         error?
         <p>{error}</p>
+        
         :
-            <div key={detailProd[0].id} className="container">
-                <h2>Detalles</h2>
-                <p> {detailProd[0].title}</p>
-                <img src={detailProd[0].image}/>
-                <p> {detailProd[0].description}</p>
-            </div>
+        
+        detailProd.map((itemd)=>
+          <div key={itemd.id} className="container">
+                  <h2>Detalles</h2>
+                  <p> {itemd.title}</p>
+                  <img src={itemd.image}/>
+                  <p> {itemd.description}</p>
+              </div>
+             )
+      
+        
+       
         }
+
          <ItemCount stock={5} initial={1} />
-        </>
+       
+        </> 
+    
     )
 
 }
