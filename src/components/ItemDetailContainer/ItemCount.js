@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { hola, } from "./ItemDetailContainer"
 
 const ItemCount=({stock, initial})=>{
     const[amount, SetAmount]=useState(initial)

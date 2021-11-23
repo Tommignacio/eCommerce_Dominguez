@@ -1,27 +1,14 @@
-
-import { useEffect, useState } from "react"
 import Item from "./Item"
-import PromiseFetch from "./PromiseFetch"
 
-const ItemList=()=>{
-    const[productos,setProductos]=useState([])
-    const[error,setError]=useState("")
+const ItemList=({items, error})=>{
 
-    useEffect(()=>{
-        PromiseFetch()
-        .then(result=>setProductos(result) )
-        .catch(err=>setError(err))
-
-
-    },[])
-    
     return(
         <>
         {
         error?
         <p>{error}</p>
         :
-        productos.map((el)=>
+        items.map((el)=>
         <Item key={el.id} el={el}  />
         )
         }

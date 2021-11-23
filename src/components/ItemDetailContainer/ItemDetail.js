@@ -1,38 +1,39 @@
 
 import { useEffect, useState } from "react"
+import { useParams } from "react-router"
 import PromiseFetch from "../ItemListContainer/PromiseFetch"
 import ItemCount from "./ItemCount"
+import ProductsApi from "../ProductsApi/ProductsApi"
 
 const ItemDetail=()=>{
     const[detailProd,setDetailProd]=useState([])
+    const {idDetail}=useParams()
     const[error,setError]=useState("")
 
     useEffect(()=>{
-        PromiseFetch()
+        PromiseFetch(ProductsApi.find(prodDetail=>
+            prodDetail.id === parseInt(idDetail)
+        ))
         .then(result=>setDetailProd(result) )
         .catch(err=>setError(err))
-
+    console.log(setDetailProd)
 
     },[])
-    console.log(detailProd)
+   
     return(
         <>
         {
-        error?
-        <p>{error}</p>
-        
-        :
-        
-        detailProd.map((itemd)=>
-          <div key={itemd.id} className="container">
-                  <h2>Detalles</h2>
-                  <p> {itemd.title}</p>
-                  <img src={itemd.image}/>
-                  <p> {itemd.description}</p>
-              </div>
-             )
-      
-        
+        // error?
+        // <p>{error}</p>
+        // :
+        console.log(detailProd.id)
+        //   <div key={detailProd.id} className="container">
+        //           <h2>Detalles</h2>
+        //           <p> {detailProd.title}</p>
+        //           <img src={detailProd.image}/>
+        //           <p> {detailProd.description}</p>
+        //       </div>
+
        
         }
 
