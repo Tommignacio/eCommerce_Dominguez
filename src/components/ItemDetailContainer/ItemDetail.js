@@ -30,7 +30,7 @@ const ItemDetail = ({elem}) => {
 
             :   
             //sino muestra el boton checkput para finalizar compra
-            <Link to='/cart'> <Button>Check Out </Button></Link>
+            <Link to='/cart'> <button>Check Out </button></Link>
            
        
         

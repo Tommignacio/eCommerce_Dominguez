@@ -7,7 +7,7 @@ return(
     <>
         <div className="container">
             <p> {props.el.title}</p>
-            <Link to={`/item/${props.id}`}><img src={props.el.image}/></Link>
+            <Link to={`/item/${props.el.id}`}><img src={props.el.image}/></Link>
         </div>
     </>
 )
