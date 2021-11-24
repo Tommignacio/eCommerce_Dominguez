@@ -15,8 +15,8 @@ const ItemDetail = ({elem}) => {
         <>
 
         {
-            //si no hay productos agregados (no se apreto el boton de itemcount)
-            countItem===0 ?
+            
+            elem &&
                 //muestra el contador de compra
                 <div key={elem.id} className="container">
                     <h2>Detalles</h2>
@@ -25,12 +25,23 @@ const ItemDetail = ({elem}) => {
                     <p> {elem.description}</p>
 
                     {/* llama al componente Itemcount y le envia el stock, el evento y el stock inicial */}
-                    <ItemCount stock={elem.stock} initial={1} onAdd={onAdd} />
+                    {
+                        //si no hay productos agregados (no se apreto el boton de itemcount)
+
+                        countItem===0?
+                            <ItemCount stock={elem.stock} initial={1} onAdd={onAdd} />
+                        :
+                        //sino muestra el boton checkput para finalizar compra
+                            <Link to='/cart'> <button>Check Out </button></Link>
+                        
+                        
+                    }
+                    
                 </div>
 
-            :   
-            //sino muestra el boton checkput para finalizar compra
-            <Link to='/cart'> <button>Check Out </button></Link>
+               
+           
+            
            
        
         
