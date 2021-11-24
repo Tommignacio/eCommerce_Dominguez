@@ -18,11 +18,12 @@ const ItemDetailContainer=()=>{
         .catch(err=>console.log(err))
             
     },[])
- useEffect(()=>{console.log(detailProd)},[detailProd])
+
     return(
     <>
-    {detailProd ?     <ItemDetail elem={detailProd} />
- : <h1>ss</h1> }
+    {detailProd ?  
+       <ItemDetail elem={detailProd} />
+        : <h1>Loading...</h1> }
     </>
     )
 }
