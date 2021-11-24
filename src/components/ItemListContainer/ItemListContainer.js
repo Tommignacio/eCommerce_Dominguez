@@ -14,6 +14,7 @@ const ItemListContainer=()=>{
 
 
     useEffect(()=>{
+        console.log(idCategory)
         PromiseFetch(ProductsApi.filter(prod=>{
             if(idCategory===undefined){
                 return prod
@@ -27,7 +28,7 @@ const ItemListContainer=()=>{
         .catch(err=>setError(err))
 
 
-    },[productos])
+    },[idCategory])
 
     //renderizo el itemlist, envia props del estado del array (base de datos) luego de ser actualizado y el error
     return(
