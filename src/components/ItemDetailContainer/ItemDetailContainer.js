@@ -10,7 +10,6 @@ const ItemDetailContainer=()=>{
     // const[error,setError]=useState("")
 
     useEffect(()=>{
-        console.log(idDetail)
         PromiseFetch(ProductsApi.find(prodDetail=>
             prodDetail.id === parseInt(idDetail)
         ))
@@ -20,10 +19,9 @@ const ItemDetailContainer=()=>{
     },[])
 
     return(
-    <>
-    {detailProd ?  
+    <> 
        <ItemDetail elem={detailProd} />
-        : <h1>Loading...</h1> }
+   
     </>
     )
 }

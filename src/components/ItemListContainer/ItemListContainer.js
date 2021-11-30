@@ -13,8 +13,8 @@ const ItemListContainer=()=>{
     const[error,setError]=useState("")
 
 
+
     useEffect(()=>{
-        console.log(idCategory)
         PromiseFetch(ProductsApi.filter(prod=>{
             if(idCategory===undefined){
                 return prod
@@ -34,7 +34,11 @@ const ItemListContainer=()=>{
     return(
         <>
         <h1>Welcome to Gentleman</h1>
-        <ItemList items={productos} error={error} />
+        {   productos.length>0 ?
+             <ItemList items={productos} error={error} />
+             : <h3>Cargando...</h3>
+        }
+       
     </>
     )
 }
