@@ -1,21 +1,11 @@
-import Item from "./Item"
+import Item from "./Item";
 
-const ItemList=({items, error})=>{
+const ItemList = ({ items, error }) => {
+  return (
+    <>
+      {error ? <p>{error}</p> : items.map((el) => <Item key={el.id} el={el} />)}
+    </>
+  );
+};
 
-    return(
-        <>
-        {
-        error?
-        <p>{error}</p>
-        :
-        items.map((el)=>
-        <Item key={el.id} el={el}  />
-        )
-        }
-        </>
-    )
-
-}
-
-
-export default ItemList
+export default ItemList;

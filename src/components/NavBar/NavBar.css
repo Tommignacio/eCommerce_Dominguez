@@ -1,12 +1,11 @@
-.my-formSearch{
+.my-formSearch {
 	margin-left: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.my-form-control{
-    width: auto;
-    display: inline-block;
-    }
-
+.my-form-control {
+	width: auto;
+	display: inline-block;
+}

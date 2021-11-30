@@ -1,15 +1,15 @@
 import ProductsApi from "../ProductsApi/ProductsApi";
 
-const PromiseFetch=(filterProd)=>{
-    return new Promise((resolve,reject)=>{
-    setTimeout(() => {
-        if (ProductsApi){
-            resolve(filterProd)
-        }else{
-            reject("No hay nada en la base de datos")
-        }
-    },2000);
-})
-}
+const PromiseFetch = (filterProd) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (ProductsApi) {
+				resolve(filterProd);
+			} else {
+				reject("No hay nada en la base de datos");
+			}
+		}, 2000);
+	});
+};
 
-export default PromiseFetch
+export default PromiseFetch;
