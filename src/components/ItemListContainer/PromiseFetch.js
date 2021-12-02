@@ -8,7 +8,7 @@ const PromiseFetch = (filterProd) => {
 			} else {
 				reject("No hay nada en la base de datos");
 			}
-		}, 2000);
+		}, 500);
 	});
 };
 

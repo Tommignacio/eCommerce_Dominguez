@@ -11,7 +11,9 @@ const ItemListContainer = () => {
 	//estado que recibe el id de la ruta en App (Route path="/category/:idCategory")
 	const { idCategory } = useParams();
 	const [error, setError] = useState("");
+	console.log("ItemListContainer");
 
+	//didupdate: se ejecuta cuando se monta y se actualiza la ruta
 	useEffect(() => {
 		PromiseFetch(
 			ProductsApi.filter((prod) => {
