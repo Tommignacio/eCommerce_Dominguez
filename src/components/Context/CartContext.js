@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
@@ -29,6 +29,8 @@ const CartContextProvider = ({ children }) => {
 		} else {
 			//si ya lo encontro, entonces solo aumenta su cantidad seleccionada
 			isInCart.qtyItem += quantity;
+			//actualiza el estado para que se vea
+			setCartList([...cartList]);
 		}
 	};
 
@@ -60,9 +62,8 @@ const CartContextProvider = ({ children }) => {
 	const totalFinal = () => {
 		//guarda en una variable todos los resultados de mis prod seleccionados en el carrito a traves de un ID, mapeados por el array cartList
 		let resultFinal = cartList.map((i) => calcTotalPerItem(i.idItem)); //1,2,3
-		//retorna un nuevo array sumando el valor que tenia el resultFinal +
+		//retorna un nuevo array sumando el valor que tenia el  array + el nuevo q encuntra
 		return resultFinal.reduce(
-			//
 			(previousValue, currentValue) => previousValue + currentValue
 			// let variable(1) += nuevo valor (1)
 			//let variable(1) += nuevo valor (2) => 3
@@ -70,6 +71,7 @@ const CartContextProvider = ({ children }) => {
 		);
 	};
 
+	//funcion que actualiza la notificacion de prod que estan en el carrito
 	const countCartlist = () => {
 		let tot = 0;
 		for (let i of cartList) {

@@ -15,7 +15,6 @@ const ItemDetail = ({ elem }) => {
 		alert(`agregó al carrito ${qty} productos`);
 		setCountItem(qty);
 		test.addItem(elem, qty);
-		console.log(test);
 	};
 	return (
 		<>

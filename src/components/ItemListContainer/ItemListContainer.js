@@ -1,9 +1,8 @@
 //Aca estan los estados de la lista de productos
 import { useEffect, useState } from "react";
-import PromiseFetch from "./PromiseFetch";
 import ItemList from "./ItemList";
 import { useParams } from "react-router";
-import ProductsApi from "../ProductsApi/ProductsApi";
+import FirestoreFetch from "../../utils/FirestoreFetch";
 
 const ItemListContainer = () => {
 	//estado que recibe todo el array de la base de datos
@@ -11,32 +10,26 @@ const ItemListContainer = () => {
 	//estado que recibe el id de la ruta en App (Route path="/category/:idCategory")
 	const { idCategory } = useParams();
 	const [error, setError] = useState("");
-	console.log("ItemListContainer");
 
 	//didupdate: se ejecuta cuando se monta y se actualiza la ruta
 	useEffect(() => {
-		PromiseFetch(
-			ProductsApi.filter((prod) => {
-				if (idCategory === undefined) {
-					return prod;
-				} else {
-					return prod.id === parseInt(idCategory);
-				}
+		FirestoreFetch(idCategory)
+			.then((result) => {
+				console.log(result);
+				setProductos(result);
 			})
-		)
-			.then((result) => setProductos(result))
-			.catch((err) => setError(err));
+			.catch((err) => console.log(err));
 	}, [idCategory]);
 
 	//renderizo el itemlist, envia props del estado del array (base de datos) luego de ser actualizado y el error
 	return (
 		<>
 			<h1>Welcome to Gentleman</h1>
-			{productos.length > 0 ? (
-				<ItemList items={productos} error={error} />
-			) : (
+			{/* {productos.length > 0 ? ( */}
+			<ItemList items={productos} error={error} />
+			{/* ) : (
 				<h3>Cargando...</h3>
-			)}
+			)} */}
 		</>
 	);
 };
