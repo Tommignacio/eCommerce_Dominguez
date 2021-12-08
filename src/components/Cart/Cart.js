@@ -1,18 +1,59 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 
+import {
+	collection,
+	doc,
+	setDoc,
+	updateDoc,
+	increment,
+} from "firebase/firestore";
+import db from "../../utils/FirebaseConfig";
+
 const Cart = () => {
 	const test = useContext(CartContext);
+
+	const createOrder = () => {
+		let order = {
+			buyer: {
+				name: "Juan Carlos",
+				email: "juanca@gmail.com",
+				phone: "58392850",
+			},
+			items: test.cartList.map((item) => ({
+				id: item.idItem,
+				title: item.titlItem,
+				price: item.priceItem,
+				qty: item.qtyItem,
+			})),
+			total: test.totalFinal(),
+		};
+		test.cartList.forEach(async (item) => {
+			const itemRef = doc(db, "products", item.idItem);
+			await updateDoc(itemRef, {
+				stock: increment(-item.qtyItem),
+			});
+		});
+		const createOrderInFirestore = async () => {
+			const newOrderRef = doc(collection(db, "orders"));
+			await setDoc(newOrderRef, order);
+			return newOrderRef;
+		};
+		createOrderInFirestore()
+			.then((result) => alert(result.id))
+			.catch((err) => console.log(err));
+
+		test.clear();
+	};
 
 	return (
 		<>
 			{/* si el carrito no esta vacio */}
-			{test.cartList.length > 0 && (
-				<button onClick={test.clear}> Eliminar todo</button>
-			)}
 			{test.cartList.length > 0 ? (
 				<>
 					<p> precio final a pagar:{test.totalFinal()}</p>
+					<button onClick={test.clear}> Eliminar todo</button>
+					<button onClick={createOrder}>Finalizar Compra</button>
 					{
 						// recorrre los objetos dentro de la lista del carrito
 						test.cartList.map((el) => (
