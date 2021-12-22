@@ -1,11 +1,15 @@
-.my-formSearch {
-	margin-left: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.navbar-collapse {
+	flex-grow: 0;
+}
+.nav-link {
+	text-align: center;
+}
+@media (min-width: 992px) {
+	.navbar-brand {
+		order: 2;
+	}
 }
 
-.my-form-control {
-	width: auto;
-	display: inline-block;
+.navbar-nav-scroll {
+	overflow-x: hidden;
 }

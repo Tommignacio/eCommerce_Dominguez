@@ -8,11 +8,12 @@ import {
 import { doc, getDoc } from "firebase/firestore";
 import db from "./FirebaseConfig";
 
-const FirestoreFetch = async (idCategory) => {
+const FirestoreFetch = async (idName, idCategory) => {
 	let q;
-	if (idCategory) {
+	if (idName) {
 		q = query(
 			collection(db, "Products"),
+			where("category.name", "==", idName),
 			where("category.id", "==", idCategory)
 		);
 	} else {

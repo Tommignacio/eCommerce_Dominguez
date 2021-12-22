@@ -1,57 +1,71 @@
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
+import {
+	Navbar,
+	Nav,
+	NavDropdown,
+	Form,
+	FormControl,
+	Button,
+	Container,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+
+const NavbarBootstrap = () => {
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg navbar-light bg-light">
-				<Link to="/" className="navbar-brand">
-					Gentleman
-				</Link>
-				<button
-					className="navbar-toggler"
-					type="button"
-					datatoggle="collapse"
-					dataarget="#navbarTogglerDemo02"
-					aria-controls="navbarTogglerDemo02"
-					aria-expanded="false"
-					aria-label="Toggle navigation"
-				>
-					<span className="navbar-toggler-icon"></span>
-				</button>
-
-				<div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li className="nav-item active">
-							<Link to="/category/1" className="nav-link">
-								Summer
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link to="/category/2" className="nav-link">
-								Winter
-							</Link>
-						</li>
-					</ul>
-					<form className="my-formSearch form-inline my-2 my-lg-0 ">
-						<input
-							className="form-control my-form-control mr-sm-2 miBtn"
-							type="search"
-							placeholder="Search"
-						/>
-
-						<button
-							className="btn btn-outline-success my-2 my-sm-0 "
-							type="submit"
+			<Navbar bg="dark" variant={"dark"} expand="lg">
+				<Container fluid>
+					<Navbar.Brand>
+						<Link to="/" className="nav-link">
+							Gentleman
+						</Link>
+					</Navbar.Brand>
+					<Navbar.Toggle aria-controls="navbarScroll" />
+					<Navbar.Collapse id="navbarScroll">
+						<Nav
+							className="me-auto my-2 my-lg-0"
+							style={{ maxHeight: "100px" }}
+							navbarScroll
 						>
-							Search
-						</button>
-						<CartWidget />
-					</form>
-				</div>
-			</nav>
+							<Nav.Link href="#action1">
+								{" "}
+								<Link to="/summer/shirt-tshirt" className="nav-link">
+									{" "}
+									Summer{" "}
+								</Link>
+							</Nav.Link>
+							<Nav.Link href="#action2">
+								<Link to="/winter/2" className="nav-link">
+									Winter{" "}
+								</Link>
+							</Nav.Link>
+							{/* <NavDropdown title="Link" id="navbarScrollingDropdown">
+								<NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+								<NavDropdown.Item href="#action4">
+									Another action
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item href="#action5">
+									Something else here
+								</NavDropdown.Item>
+							</NavDropdown> */}
+						</Nav>
+						<Form className="d-flex">
+							<FormControl
+								type="search"
+								placeholder="Search"
+								className="me-2"
+								aria-label="Search"
+							/>
+							<Button variant="outline-success">Search</Button>
+							<CartWidget />
+						</Form>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
 		</>
 	);
 };
 
-export default Navbar;
+export default NavbarBootstrap;

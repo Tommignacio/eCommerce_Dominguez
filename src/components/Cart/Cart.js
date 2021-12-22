@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
+import Button from "react-bootstrap/Button";
 
 import {
 	collection,
@@ -52,8 +53,8 @@ const Cart = () => {
 			{test.cartList.length > 0 ? (
 				<>
 					<p> precio final a pagar:{test.totalFinal()}</p>
-					<button onClick={test.clear}> Eliminar todo</button>
-					<button onClick={createOrder}>Finalizar Compra</button>
+					<Button onClick={test.clear}> Eliminar todo</Button>
+					<Button onClick={createOrder}>Finalizar Compra</Button>
 					{
 						// recorrre los objetos dentro de la lista del carrito
 						test.cartList.map((el) => (
@@ -68,9 +69,9 @@ const Cart = () => {
 									<h2> Precio: {el.priceItem}</h2>
 									<h2>Precio final: {test.calcTotalPerItem(el.idItem)}</h2>
 									{/* evento que tiene como manejador a la funciin del contexto cart y como parametros el id del producto agregado al carrito */}
-									<button onClick={() => test.removeItem(el.idItem)}>
+									<Button onClick={() => test.removeItem(el.idItem)}>
 										Eliminar producto
-									</button>
+									</Button>
 								</div>
 							</div>
 						))

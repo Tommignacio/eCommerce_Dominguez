@@ -1,4 +1,3 @@
-import { Button } from "bootstrap";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
@@ -11,10 +10,10 @@ const ItemDetail = ({ elem }) => {
 	const test = useContext(CartContext);
 
 	//funcion que recibe la cantidad de itemcount seleccionada y la guarda en el estado countitem
-	const onAdd = (qty) => {
+	const onAdd = (qty, size) => {
 		alert(`agregó al carrito ${qty} productos`);
 		setCountItem(qty);
-		test.addItem(elem, qty);
+		test.addItem(elem, qty, size);
 	};
 	return (
 		<>

@@ -6,7 +6,7 @@ import { CartContext } from "../Context/CartContext";
 const CartWidget = () => {
 	const test = useContext(CartContext);
 	return (
-		<>
+		<div className="cartStyle">
 			<Link to="/cart">
 				{" "}
 				{test.cartList.length > 0 && (
@@ -17,7 +17,7 @@ const CartWidget = () => {
 					<AiOutlineShoppingCart />
 				</button>
 			</Link>
-		</>
+		</div>
 	);
 };
 export default CartWidget;
