@@ -10,10 +10,6 @@
 	color: #ffffff;
 }
 
-.navbar-brand {
-	margin-left: -53px;
-}
-
 @media (min-width: 992px) {
 	.navbar-brand {
 		order: 2;

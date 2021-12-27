@@ -84,8 +84,10 @@ const SubmitInput = styled.input`
 
 const DivSocial = styled.div`
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns:  5em 4em 5em;
 	justify-items: center;
+	justify-content: center;
+}
 `;
 
 const ImageDiv = styled.div`
@@ -94,6 +96,10 @@ const ImageDiv = styled.div`
 
 const Image = styled.img`
 	width: 2rem;
+`;
+
+const WrappSocial = styled.div`
+	width: 100%;
 `;
 
 export {
@@ -108,4 +114,5 @@ export {
 	DivFooter,
 	Image,
 	ImageDiv,
+	WrappSocial,
 };

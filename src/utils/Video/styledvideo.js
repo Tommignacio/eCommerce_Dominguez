@@ -20,8 +20,8 @@ const DivTitle = styled.div`
 `;
 
 const ImgTitle = styled.img`
-	max-width: 16%;
-	height: auto;
+	height: 13em;
+
 	position: absolute;
 	bottom: 0;
 	margin-bottom: 1em;
