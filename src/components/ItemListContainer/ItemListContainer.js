@@ -3,22 +3,28 @@ import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { useParams } from "react-router";
 import FirestoreFetch from "../../utils/FirestoreFetch";
-import { DivItem, WrapItem } from "./styledItem";
+import { DivBody, WrapItem } from "./styledItem";
 import Catalogue from "../Catalogue/Catalogue";
+import { NavBarList } from "../NavBar/NavBarList";
+import { Loader } from "../Loader/Loader";
 
 const ItemListContainer = () => {
 	//estado que recibe todo el array de la base de datos
 	const [productos, setProductos] = useState([]);
 	//estado que recibe el id de la ruta en App (Route path="/category/:idCategory")
 	const { idName, idCategory } = useParams();
-	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
 
+	console.log(loading);
 	//didupdate: se ejecuta cuando se monta y se actualiza la ruta
 	useEffect(() => {
+		setLoading(true);
 		FirestoreFetch(idName, idCategory)
 			.then((result) => {
-				console.log(result);
 				setProductos(result);
+			})
+			.then(() => {
+				setLoading(false);
 			})
 			.catch((err) => console.log(err));
 	}, [idName, idCategory]);
@@ -26,16 +32,17 @@ const ItemListContainer = () => {
 	//renderizo el itemlist, envia props del estado del array (base de datos) luego de ser actualizado y el error
 	return (
 		<>
-			<h1>Welcome to Gentleman</h1>
-			{productos.length > 0 ? (
+			{loading && <Loader />}
+			{productos.length > 0 && (
 				<>
-					<Catalogue />
-					<WrapItem>
-						<ItemList items={productos} error={error} />
-					</WrapItem>
+					<NavBarList />
+					<DivBody>
+						<Catalogue />
+						<WrapItem>
+							<ItemList items={productos} />
+						</WrapItem>
+					</DivBody>
 				</>
-			) : (
-				<h3>Cargando...</h3>
 			)}
 		</>
 	);

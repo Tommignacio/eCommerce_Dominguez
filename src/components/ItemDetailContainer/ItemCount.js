@@ -1,4 +1,15 @@
 import { useEffect, useState } from "react";
+import {
+	BtnAdd,
+	BtnDiv,
+	CountButtons,
+	CountDiv,
+	LabelRadio,
+	Number,
+	Qty,
+	RadioStyled,
+	SizeDiv,
+} from "./styledItemDetails";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
 	const [amount, SetAmount] = useState(0);
@@ -21,28 +32,43 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 	};
 
 	return (
-		<div className="container">
-			<h3>Carrito</h3>
-			<button onClick={increment}>+</button>
-			<p>{amount}</p>
-			<button onClick={decrement}>-</button>
-			<div>
-				<div onChange={onChangeValue}>
-					<input type="radio" value="s" name="gender" /> Small
-					<input type="radio" value="m" name="gender" /> Medium
-					<input type="radio" value="l" name="gender" /> Large
-				</div>
-			</div>
+		<>
+			<CountDiv>
+				<Qty>Quantity:</Qty>
+				<CountButtons onClick={increment}>+</CountButtons>
+				<Number>{amount}</Number>
+				<CountButtons onClick={decrement}>-</CountButtons>
+			</CountDiv>
+
 			{stock && amount ? (
-				<div>
-					<button onClick={() => onAdd(amount, size)}>
-						Agregar al carrito
-					</button>
-				</div>
+				<>
+					<SizeDiv onChange={onChangeValue}>
+						<RadioStyled
+							type="radio"
+							value="s"
+							name="gender"
+							id="s"
+							defaultChecked
+						/>
+						<LabelRadio htmlFor="s">S</LabelRadio>
+						<RadioStyled type="radio" value="m" name="gender" id="m" />
+						<LabelRadio htmlFor="m">M</LabelRadio>
+						<RadioStyled type="radio" value="l" name="gender" id="l" />
+						<LabelRadio htmlFor="l">L</LabelRadio>
+						<RadioStyled type="radio" value="xl" name="gender" id="xl" />
+						<LabelRadio htmlFor="xl">XL</LabelRadio>
+					</SizeDiv>
+
+					<BtnDiv>
+						<BtnAdd onClick={() => onAdd(amount, size)}>Add to cart</BtnAdd>
+					</BtnDiv>
+				</>
 			) : (
-				<button disabled>Agregar al carrito</button>
+				<BtnDiv>
+					<BtnAdd style={{ display: "none" }}>Add to cart</BtnAdd>
+				</BtnDiv>
 			)}
-		</div>
+		</>
 	);
 };
 

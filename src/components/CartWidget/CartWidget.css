@@ -5,16 +5,28 @@
 }
 
 .btn {
-	margin: 10px;
+	margin: 0;
+	border: none;
+	color: #b8b8b8;
 }
-.btn-count {
-	color: black;
-	background-color: rgb(228, 94, 94);
-	border-radius: 50px;
-	width: 22px;
-	height: 20px;
+.btn:hover {
+	background-color: transparent;
+}
+
+.myLink {
+	text-decoration: none;
 	position: relative;
-	bottom: -15px;
+}
+
+.btn-count {
+	color: rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
+	border-radius: 50px;
+	width: 19px;
+	height: 19px;
+	right: 1px;
+	bottom: 10px;
+	position: absolute;
 	font-size: 15px;
 	text-align: center;
 }

@@ -3,7 +3,17 @@
 }
 .nav-link {
 	text-align: center;
+	color: #c6c6c6;
 }
+
+.nav-link:hover {
+	color: #ffffff;
+}
+
+.navbar-brand {
+	margin-left: -53px;
+}
+
 @media (min-width: 992px) {
 	.navbar-brand {
 		order: 2;

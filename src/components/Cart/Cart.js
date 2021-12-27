@@ -1,6 +1,35 @@
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
-import Button from "react-bootstrap/Button";
+import { FaTrashAlt, FaTimes } from "react-icons/fa";
+import {
+	DivCart,
+	ImgCart,
+	DivTitle,
+	Text,
+	DivText,
+	DelBtn,
+	DivImg,
+	DivTotal,
+	Total,
+	DivContainer,
+	DivDelBtn,
+	FinalDiv,
+	FinalPrice,
+	TitFinalPrice,
+	FinalWrapp,
+	FinalDeliv,
+	FinalDelFree,
+	DeliDiv,
+	BuyBtn,
+	DivBuyBtn,
+	DivEmpty,
+	Empty,
+	BtnContinue,
+	DivBag,
+	WrappCart,
+	DelAll,
+	DivDelete,
+} from "./styledCart";
 
 import {
 	collection,
@@ -10,6 +39,8 @@ import {
 	increment,
 } from "firebase/firestore";
 import db from "../../utils/FirebaseConfig";
+import { NavBarList } from "../NavBar/NavBarList";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
 	const test = useContext(CartContext);
@@ -41,7 +72,9 @@ const Cart = () => {
 			return newOrderRef;
 		};
 		createOrderInFirestore()
-			.then((result) => alert(result.id))
+			.then((result) =>
+				alert("Thanks for you purchase! Your product order is: " + result.id)
+			)
 			.catch((err) => console.log(err));
 
 		test.clear();
@@ -50,35 +83,86 @@ const Cart = () => {
 	return (
 		<>
 			{/* si el carrito no esta vacio */}
+			<NavBarList />
+
 			{test.cartList.length > 0 ? (
-				<>
-					<p> precio final a pagar:{test.totalFinal()}</p>
-					<Button onClick={test.clear}> Eliminar todo</Button>
-					<Button onClick={createOrder}>Finalizar Compra</Button>
+				<WrappCart>
+					<h1>Shopping Bag</h1>
+					<DivDelete>
+						<DelAll onClick={test.clear}>
+							{" "}
+							<FaTimes />
+						</DelAll>
+					</DivDelete>
+
 					{
 						// recorrre los objetos dentro de la lista del carrito
 						test.cartList.map((el) => (
-							<div key={el.idItem}>
-								<div className="container">
-									<p>Finalizar Compra</p>
-								</div>
-								<div key={el.idItem}>
-									<h2>{el.titlItem} </h2>
-									<img src={el.imgItem} />
-									<h2> cantidad: {el.qtyItem}</h2>
-									<h2> Precio: {el.priceItem}</h2>
-									<h2>Precio final: {test.calcTotalPerItem(el.idItem)}</h2>
-									{/* evento que tiene como manejador a la funciin del contexto cart y como parametros el id del producto agregado al carrito */}
-									<Button onClick={() => test.removeItem(el.idItem)}>
-										Eliminar producto
-									</Button>
-								</div>
-							</div>
+							<DivCart key={el.idItem}>
+								<DivImg>
+									<ImgCart src={el.imgItem} />
+								</DivImg>
+
+								<DivContainer>
+									<DivTitle>
+										<h2>{el.titlItem} </h2>
+									</DivTitle>
+									<DivText>
+										<Text> Quantity: {el.qtyItem}</Text>
+										<Text>Price: $ {el.priceItem}</Text>
+										<Text>
+											Size:{" "}
+											<spam style={{ textTransform: "uppercase" }}>
+												{el.sizeItem}{" "}
+											</spam>
+										</Text>
+									</DivText>
+								</DivContainer>
+								<DivTotal>
+									<Total>
+										$ {test.calcTotalPerItem(el.idItem, el.sizeItem)}
+									</Total>
+									{/* evento que tiene como manejador a la funcion del contexto cart y como parametros el id del producto agregado al carrito */}
+									<DivDelBtn>
+										<DelBtn onClick={() => test.removeItem(el.idItem)}>
+											<FaTrashAlt />
+										</DelBtn>
+									</DivDelBtn>
+								</DivTotal>
+							</DivCart>
 						))
 					}
-				</>
+					<FinalWrapp>
+						<FinalDiv>
+							<TitFinalPrice> Total</TitFinalPrice>
+							<FinalPrice> {test.totalFinal()}</FinalPrice>
+						</FinalDiv>
+						<DeliDiv>
+							<FinalDeliv>Delivery</FinalDeliv>
+							<FinalDelFree> Free!</FinalDelFree>
+						</DeliDiv>
+						<DivBuyBtn>
+							<BuyBtn onClick={createOrder}>Buy</BuyBtn>
+						</DivBuyBtn>
+					</FinalWrapp>
+				</WrappCart>
 			) : (
-				<p>El carrito esta vacío</p>
+				<DivEmpty>
+					<DivBag>
+						<Empty>Your Shopping Bag is empty!</Empty>
+						<Link
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								color: "black",
+								textDecoration: "none",
+							}}
+							to="/"
+						>
+							<BtnContinue>Continue Shopping</BtnContinue>
+						</Link>
+					</DivBag>
+				</DivEmpty>
 			)}
 		</>
 	);
