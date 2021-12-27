@@ -15,7 +15,6 @@ const ItemListContainer = () => {
 	const { idName, idCategory } = useParams();
 	const [loading, setLoading] = useState(false);
 
-	console.log(loading);
 	//didupdate: se ejecuta cuando se monta y se actualiza la ruta
 	useEffect(() => {
 		setLoading(true);

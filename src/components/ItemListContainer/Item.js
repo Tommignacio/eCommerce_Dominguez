@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import { DivItem, DivText, ImgStyled, Text, Title } from "./styledItem";
 //ESTRUCTURa de cada producto
 //recibe props del estado de los datos del array que estan en ITEMLISTCONTAINER
-const Item = ({ el, index }) => {
-	console.log(el);
-	console.log(index); //usar para cambiar estilos de un elemento
+const Item = ({ el }) => {
 	return (
 		<>
 			<DivItem>

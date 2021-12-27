@@ -6,7 +6,7 @@ const DivFooter = styled.div`
 	flex-direction: column;
 	align-items: center;
 	background-color: grey;
-	width: 100vw;
+	width: 100%;
 	height: auto;
 `;
 

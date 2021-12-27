@@ -34,7 +34,7 @@ export default FirestoreFetch;
 export const FirestoreFetchOne = async (idDetail) => {
 	const docRef = doc(db, "Products", idDetail);
 	const docSnap = await getDoc(docRef);
-	console.log(idDetail);
+
 	if (docSnap.exists()) {
 		return {
 			id: idDetail,

@@ -5,11 +5,8 @@ const CartContext = createContext();
 const CartContextProvider = ({ children }) => {
 	const [cartList, setCartList] = useState([]);
 	const [change, setChange] = useState(null);
-	console.log(cartList);
 
 	const addItem = (item, quantity, size) => {
-		console.log(size);
-
 		// variable que almacena si el objeto nuevo seleccionado se repite con los que ya estan en la lista del carrito
 		let isInCart = cartList.find(
 			(el) => (el.idItem === item.id) & (el.sizeItem === size)
@@ -55,7 +52,6 @@ const CartContextProvider = ({ children }) => {
 	const calcTotalPerItem = (id, size) => {
 		//recorre los obj de la lista
 		for (let prod of cartList) {
-			// console.log(id, prod.idItem);
 			//si el id que recibe en c/vuelta coincide con el id del prod de la lista del carrito hace la multiplicacion
 			if ((id === prod.idItem) & (size === prod.sizeItem)) {
 				let result = prod.qtyItem * prod.priceItem;
@@ -84,10 +80,8 @@ const CartContextProvider = ({ children }) => {
 		let tot = 0;
 		for (let i of cartList) {
 			tot += i.qtyItem;
-			console.log(i.qtyItem);
 			setChange(tot);
 		}
-		console.log(change);
 		return change;
 	};
 

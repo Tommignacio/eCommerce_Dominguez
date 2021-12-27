@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const WrappCart = styled.div`
 	margin-top: 72px;
-	height: 100vh;
+
 	width: 100vw;
 `;
 

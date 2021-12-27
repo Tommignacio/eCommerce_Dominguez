@@ -11,6 +11,7 @@ export const NavBarList = () => {
 		background-color: black;
 		position: fixed;
 		margin-top: -72px;
+		z-index: 999;
 	`;
 
 	return (

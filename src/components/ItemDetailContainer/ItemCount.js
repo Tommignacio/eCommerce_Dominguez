@@ -28,7 +28,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
 	const onChangeValue = (e) => {
 		setSize(e.target.value);
-		console.log(e.target.value);
 	};
 
 	return (
