@@ -15,7 +15,7 @@ export const Form = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (mail.indexOf("@") != -1) {
+		if (mail.indexOf("@") !== -1) {
 			alert("Your email was registered correctly");
 			setMail("");
 		} else {

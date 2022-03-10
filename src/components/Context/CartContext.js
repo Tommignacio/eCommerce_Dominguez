@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 const CartContext = createContext();
 
@@ -13,6 +13,7 @@ const CartContextProvider = ({ children }) => {
 		);
 
 		// si no esta en el carrito, agrega el nuevo producto
+
 		if (!isInCart) {
 			setCartList([
 				//a los products que ya estan en la lista del carrito
@@ -44,7 +45,7 @@ const CartContextProvider = ({ children }) => {
 
 	//funcion manejadora de evento que devuelve una lista de objetos que no coinciden con el seleccionado, el cual se eliminara ese solo
 	const removeItem = (id) => {
-		const itemFilter = cartList.filter((el) => el.idItem != id);
+		const itemFilter = cartList.filter((el) => el.idItem !== id);
 		setCartList(itemFilter);
 	};
 
@@ -69,9 +70,6 @@ const CartContextProvider = ({ children }) => {
 		//retorna un nuevo array sumando el valor que tenia el  array + el nuevo q encuntra
 		return resultFinal.reduce(
 			(previousValue, currentValue) => previousValue + currentValue
-			// let variable(1) += nuevo valor (1)
-			//let variable(1) += nuevo valor (2) => 3
-			//let variable(3) += nuevo valor (3) => 6
 		);
 	};
 

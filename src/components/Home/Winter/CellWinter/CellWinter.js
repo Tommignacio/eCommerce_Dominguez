@@ -1,6 +1,5 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { StyledLink, SubTitle } from "./styledCellWinter";
 import { CarouselTitle, Wrapper } from "./styledCellWinter";
 

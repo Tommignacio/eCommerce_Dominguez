@@ -17,13 +17,13 @@ const ItemCount = ({ stock, initial, onAdd }) => {
 
 	useEffect(() => {
 		SetAmount(initial);
-	}, []);
+	}, [initial]);
 
 	const increment = () => {
-		amount < stock && SetAmount(amount + 1);
+		if (amount < stock) SetAmount(amount + 1);
 	};
 	const decrement = () => {
-		amount > initial && SetAmount(amount - 1);
+		if (amount > initial) SetAmount(amount - 1);
 	};
 
 	const onChangeValue = (e) => {
