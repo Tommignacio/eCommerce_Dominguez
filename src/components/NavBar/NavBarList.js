@@ -22,7 +22,7 @@ export const NavBarList = () => {
 						<CartWidget />
 						<Navbar.Brand>
 							<Link to="/" className="nav-link">
-								Gentleman
+								Old London
 							</Link>
 						</Navbar.Brand>
 						<Navbar.Toggle aria-controls="navbarScroll" />
